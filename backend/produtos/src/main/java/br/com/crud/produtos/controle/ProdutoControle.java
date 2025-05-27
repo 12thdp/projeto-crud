@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import br.com.crud.produtos.modelo.ProdutoModelo;
 import br.com.crud.produtos.modelo.RespostaModelo;
 import br.com.crud.produtos.servico.ProdutoServico;
@@ -18,15 +19,15 @@ import br.com.crud.produtos.servico.ProdutoServico;
 @CrossOrigin(origins="*")
 public class ProdutoControle {
 
-  @Autowired
-  private ProdutoServico ps;
+    @Autowired
+    private ProdutoServico ps;
 
-  @DeleteMapping("/remover/{codigo}")
+    @DeleteMapping("/remover/{codigo}")
     public ResponseEntity<RespostaModelo> remover(@PathVariable long codigo){
         return ps.remover(codigo);
     }
 
-  @PostMapping("/cadastrar")
+ @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastrar(@RequestBody ProdutoModelo pm){
         return ps.cadastrarAlterar(pm, "cadastrar");
     }
@@ -36,7 +37,7 @@ public class ProdutoControle {
         return ps.cadastrarAlterar(pm, "alterar");
     }
 
-  @GetMapping("/listar")
+    @GetMapping("/listar")
     public Iterable<ProdutoModelo> listar(){
         return ps.listar();
     }
